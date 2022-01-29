@@ -25,7 +25,6 @@ public class GridManager : MonoBehaviour
         randomPos.x = Mathf.RoundToInt(UnityEngine.Random.Range(0,grid.cols));
         randomPos.y = Mathf.RoundToInt(UnityEngine.Random.Range(0,grid.rows));
         if(grid.GetItemAt(randomPos) == GridItemType.empty){
-            Debug.Log("Place trap at "+randomPos);
             amount--;
             Instantiate(trapPrefab,grid.GetWoldPosition(randomPos),Quaternion.identity,transform);
         }
