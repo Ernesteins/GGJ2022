@@ -1,2 +1,3 @@
 # GGJ2022
 GameJam2022
+Juego del hombre lobo, en el dia defiende el pueblo, en la noche come buscadores...
