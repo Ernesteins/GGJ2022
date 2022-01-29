@@ -31,6 +31,12 @@ public class CustomGrid : ScriptableObject
             items[gridPos.x,gridPos.y] = item.Type;
         }
     }
+    public void AddToGrid(Vector3 position, GridItemType type){
+        Vector2Int gridPos = GetGridPoint(position);
+        if(isValid(gridPos)){
+            items[gridPos.x,gridPos.y] = type;
+        }
+    }
     public GridItemType GetItemAt(Vector2Int gridPos){
         return isValid(gridPos)? items[gridPos.x,gridPos.y] : GridItemType.obstacle;
     }
@@ -44,7 +50,7 @@ public class CustomGrid : ScriptableObject
         return GetItemAt(gridPos) == GridItemType.empty ;
     }
     bool isValid(Vector2Int gridPos) =>  gridPos.x>=0 && gridPos.x < _cols && gridPos.y>=0 && gridPos.y < _rows;
-    Vector2Int GetGridPoint(Vector3 position){
+     Vector2Int GetGridPoint(Vector3 position){
         position -= gridPosition;
         int x = Mathf.RoundToInt(position.x / cellSize);
         int y = Mathf.RoundToInt(position.z / cellSize);

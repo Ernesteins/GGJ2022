@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1648fce9775bf2418dec724da6442ae, type: 3}
   m_Name: TestGrid
   m_EditorClassIdentifier: 
-  _cellSize: 2.5
-  _cols: 12
+  _cellSize: 3
+  _cols: 10
   _rows: 10
