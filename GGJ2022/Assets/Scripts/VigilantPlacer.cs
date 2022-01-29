@@ -6,6 +6,7 @@ using UnityEngine;
 public class VigilantPlacer : MonoBehaviour
 {
     [SerializeField] CustomGrid grid = null;
+    [SerializeField] int vigilantsAmount = 3;
     [SerializeField] GameObject vigilantPrefab = null; 
     [SerializeField] GameObject mousePointer = null;
 
@@ -21,16 +22,26 @@ public class VigilantPlacer : MonoBehaviour
     }
     void Update()
     {
+        if(vigilantsAmount<1) return;
         RaycastHit hit;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         if(Physics.Raycast(ray, out hit)){
             Vector3 pos = grid.SnapToGrid(hit.point);
             RenderMousePointerAt(pos);
-            if(Input.GetMouseButtonDown(0)){
+            if(Input.GetMouseButtonDown(0)&&grid.isValidPoint(pos)){
                 PlaceVigilantNear(hit.point);
+                vigilantsAmount--;
+                if(vigilantsAmount < 1){
+                    DisableMousePointer();
+                }
             }        
         }
     }
+
+  private void DisableMousePointer()
+  {
+    mousePointer.SetActive(false);
+  }
 
   private void RenderMousePointerAt(Vector3 pos)
   {

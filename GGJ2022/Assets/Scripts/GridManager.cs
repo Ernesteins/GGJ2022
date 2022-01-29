@@ -7,11 +7,12 @@ public class GridManager : MonoBehaviour
 {
     [SerializeField] CustomGrid grid = null;
     [SerializeField] GameObject trapPrefab = null;
+    public int trapAmount = 10;
     private void Awake() {
         grid.SetUp(transform.position);
     }
     private void Start() {
-        StartCoroutine(PlaceTraps(10));
+        StartCoroutine(PlaceTraps(trapAmount));
     }
 
   private IEnumerator PlaceTraps(int amount)

@@ -41,8 +41,7 @@ public class CustomGrid : ScriptableObject
     public bool isValidPoint(Vector3 pos)
     {
         Vector2Int gridPos = GetGridPoint(pos);
-        Debug.Log(GetItemAt(gridPos));
-        return isValid(gridPos) && GetItemAt(gridPos) == GridItemType.empty;
+        return GetItemAt(gridPos) == GridItemType.empty ;
     }
     bool isValid(Vector2Int gridPos) =>  gridPos.x>=0 && gridPos.x < _cols && gridPos.y>=0 && gridPos.y < _rows;
     Vector2Int GetGridPoint(Vector3 position){
