@@ -44,7 +44,6 @@ public class VigilantPlacer : MonoBehaviour
 
   void PlaceVigilantNear(Vector3 worldPos){
         Vector3 pos = grid.SnapToGrid(worldPos);
-        GameObject go = Instantiate(vigilantPrefab,pos,Quaternion.identity);
-        go.transform.position = pos;
+        Instantiate(vigilantPrefab,pos,Quaternion.identity);
     }
 }

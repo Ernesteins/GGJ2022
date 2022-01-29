@@ -38,12 +38,11 @@ public class CustomGrid : ScriptableObject
     {
         return GetWoldPosition(GetGridPoint(worldPos));
     }
-
     public bool isValidPoint(Vector3 pos)
     {
         Vector2Int gridPos = GetGridPoint(pos);
         Debug.Log(GetItemAt(gridPos));
-        return isValid(gridPos) && GetItemAt(gridPos) != GridItemType.obstacle;
+        return isValid(gridPos) && GetItemAt(gridPos) == GridItemType.empty;
     }
     bool isValid(Vector2Int gridPos) =>  gridPos.x>=0 && gridPos.x < _cols && gridPos.y>=0 && gridPos.y < _rows;
     Vector2Int GetGridPoint(Vector3 position){
@@ -52,7 +51,7 @@ public class CustomGrid : ScriptableObject
         int y = Mathf.RoundToInt(position.z / cellSize);
         return new Vector2Int(x,y);
     }
-    Vector3 GetWoldPosition(Vector2Int gridPos){
+    public Vector3 GetWoldPosition(Vector2Int gridPos){
         Vector3 position = new Vector3(
             (float) gridPos.x * cellSize,
             0,

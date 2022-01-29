@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,10 +6,33 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     [SerializeField] CustomGrid grid = null;
+    [SerializeField] GameObject trapPrefab = null;
     private void Awake() {
         grid.SetUp(transform.position);
     }
-    void OnDrawGizmos() {
+    private void Start() {
+        StartCoroutine(PlaceTraps(10));
+    }
+
+  private IEnumerator PlaceTraps(int amount)
+  {
+    Vector2Int randomPos = Vector2Int.zero;
+    int maxAttempts = 100;
+    yield return null;
+    while (amount>0 && maxAttempts > 0)
+    {
+        randomPos.x = Mathf.RoundToInt(UnityEngine.Random.Range(0,grid.cols));
+        randomPos.y = Mathf.RoundToInt(UnityEngine.Random.Range(0,grid.rows));
+        if(grid.GetItemAt(randomPos) == GridItemType.empty){
+            Debug.Log("Place trap at "+randomPos);
+            amount--;
+            Instantiate(trapPrefab,grid.GetWoldPosition(randomPos),Quaternion.identity,transform);
+        }
+        maxAttempts--;
+    }
+  }
+
+  void OnDrawGizmos() {
         Gizmos.color = Color.red;
 
         for (int j = 0; j < grid.rows; j++)
