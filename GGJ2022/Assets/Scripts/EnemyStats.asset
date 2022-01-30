@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be637568800a5f4eae448e94ee0dde4, type: 3}
+  m_Name: EnemyStats
+  m_EditorClassIdentifier: 
+  _speed: 5.8461523
+  _angularSpeed: 155.89737
+  _walkRadius: 19.487171
+  _updateTime: 3.4916859
+  _followPlayer: 0
+  _Speed: 9.743586
+  _AngularSpeed: 233.84607
+  _WalkRadius: 38.974342
+  _UpdateTime: 2.0950117
+  _FollowPlayer: 0.5
+  range: 5
+  spotAngle: 60
+  intensity: 100
+  speedMultiplier: 1.1
+  angularSpeedMultiplier: 1.1
+  walkRadiusMultiplier: 1.1
+  updateTimeMultiplier: 0.95
+  followPlayerMultiplier: 1
+  enemysActive: 1
