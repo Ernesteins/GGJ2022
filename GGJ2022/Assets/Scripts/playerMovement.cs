@@ -5,6 +5,7 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
     [SerializeField] float speed = 10;
+    [SerializeField] float gravity = -5;
     CharacterController controller;
     Vector3 input;
     // Start is called before the first frame update
@@ -21,7 +22,7 @@ public class playerMovement : MonoBehaviour
     }
     private void FixedUpdate() {
         if(input.sqrMagnitude>0){
-            controller.Move(input * speed * Time.deltaTime);
+            controller.Move(input * speed * Time.fixedDeltaTime + Vector3.up * gravity * Time.fixedDeltaTime);
         }
     }
 }
