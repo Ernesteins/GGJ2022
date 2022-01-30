@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public static event Action onGameOver = delegate(){};
     public static event Action onWin = delegate(){};
     bool isGameOver = false;
+    bool tutorial = true;
     GridManager gridManager;
     private void Start() {
         gridManager = FindObjectOfType<GridManager>();
@@ -42,6 +43,10 @@ public class GameManager : MonoBehaviour
                 isNight = true;
                 StartCoroutine(enemyStats.UpdateMovement());
                 ActivateNight(isNight);
+                if(tutorial){
+                    tutorial = false;
+                    CanvasController.DisplayMessage("press <i>Space</i> to attack!!!",1.5f);
+                }
             }
             if(isGameOver){
                 // reloads the scene
