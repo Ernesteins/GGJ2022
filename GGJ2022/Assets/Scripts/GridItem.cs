@@ -7,10 +7,12 @@ public class GridItem : MonoBehaviour
     public GridItemType Type{get => type;}
     [SerializeField] CustomGrid grid = null;
     [SerializeField] GridItemType type = 0;
+    Vector3 initialPosition;
     private void Start() {
         grid.AddToGrid(this);
+        initialPosition = transform.position;
     }
-    private void OnDistroy() {
-        grid.RemoveToGrid(this);
+    public void RemoveFromGrid() {
+        grid.RemoveToGrid(initialPosition);
     }
 }
