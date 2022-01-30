@@ -66,5 +66,6 @@ public class VigilantPlacer : MonoBehaviour
         {
             Destroy(vigilant);
         }
+        vigilantsList.Clear();
     }
 }

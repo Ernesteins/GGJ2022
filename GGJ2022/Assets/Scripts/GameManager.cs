@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] bool isNight = false;
     [SerializeField] int vigilantes = 4; 
+    [SerializeField] int traps = 6; 
+    [SerializeField] int trapsIncrement = 2; 
     [SerializeField] EnemyStats enemyStats = null;
     [SerializeField] Transform startArea = null;
     [SerializeField] GameObject player = null;
@@ -29,7 +31,7 @@ public class GameManager : MonoBehaviour
         onekill = false;
         isNight = false;
         ActivateNight(isNight);
-        CanvasController.DisplayMessage("Use the mouse to place villagers, <br> catch the werewolf!");
+        CanvasController.DisplayMessage("Use the mouse to place villagers to catch the werewolf!");
     }
     private void Update() {
         if(Input.GetButtonDown("Jump")){
@@ -77,6 +79,7 @@ public class GameManager : MonoBehaviour
         isNight = false;
         ActivateNight(isNight);
         enemyStats.LevelUp();
+        traps += trapsIncrement;
     }
     private void ActivateNight(bool night)
     {
