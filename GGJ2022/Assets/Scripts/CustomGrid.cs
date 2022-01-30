@@ -30,6 +30,12 @@ public class CustomGrid : ScriptableObject
             items[gridPos.x,gridPos.y] = item.Type;
         }
     }
+    public void RemoveToGrid(Vector3 position){
+        Vector2Int gridPos = GetGridPoint(position);
+        if(isValid(gridPos)){
+            items[gridPos.x,gridPos.y] = GridItemType.empty;
+        }
+    }
     public void AddToGrid(Vector3 position, GridItemType type){
         Vector2Int gridPos = GetGridPoint(position);
         if(isValid(gridPos)){

@@ -27,7 +27,7 @@ public class GridManager : MonoBehaviour
             randomPos.y = Mathf.RoundToInt(UnityEngine.Random.Range(0,grid.rows));
             if(grid.GetItemAt(randomPos) == GridItemType.empty){
                 amount--;
-                Instantiate(trapPrefab,grid.GetWoldPosition(randomPos),Quaternion.identity,transform);
+                trapsList.Enqueue(Instantiate(trapPrefab,grid.GetWoldPosition(randomPos),Quaternion.identity,transform));
             }
             maxAttempts--;
         }
@@ -47,6 +47,7 @@ public class GridManager : MonoBehaviour
     void DestroyAll(){
         foreach (var trap in trapsList)
         {
+            trap.GetComponent<GridItem>().RemoveFromGrid();
             Destroy(trap);
             
         }
