@@ -49,6 +49,7 @@ public class Enemy : MonoBehaviour
                 if(Physics.Raycast(ray,out RaycastHit hit,stats.range)&&hit.collider == player[0]){
                     Debug.DrawLine(transform.position, hit.point, Color.red, 0.1f);
                     player[0].GetComponent<PlayerAttack>().Discovered();
+                    CanvasController.DisplayMessage("You were discovered...");
                 }
             }
         }
