@@ -5,6 +5,7 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
     [SerializeField] float speed = 10;
+    [SerializeField] float gravity = -5;
     CharacterController controller;
     Vector3 input;
     // Start is called before the first frame update
@@ -15,18 +16,13 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        input.x = Input.GetAxisRaw("Horizontal");
-        input.z = Input.GetAxisRaw("Vertical");
+        input.x = Input.GetAxis("Horizontal");
+        input.z = Input.GetAxis("Vertical");
         input.Normalize();
-        if (input.sqrMagnitude != 0)
-        {
-            transform.forward = input;
-        }
-        
     }
     private void FixedUpdate() {
         if(input.sqrMagnitude>0){
-            controller.Move(input * speed * Time.fixedDeltaTime);
+            controller.Move(input * speed * Time.fixedDeltaTime + Vector3.up * gravity * Time.fixedDeltaTime);
         }
     }
 }

@@ -15,11 +15,18 @@ public class VigilantPlacer : MonoBehaviour
 
     Camera cam= null;
     Renderer pointerRenderer;
+    Queue<GameObject> vigilantsList = new Queue<GameObject>();
     private void Start() {
         cam = Camera.main;
         pointerRenderer = mousePointer.GetComponent<Renderer>();
         mousePointer.transform.localScale = new Vector3(grid.cellSize,0.25f,grid.cellSize);
     }
+    public void SetUp(int amount){
+        vigilantsAmount = amount;
+        DestroyAll();
+        mousePointer.SetActive(true);
+    }
+
     void Update()
     {
         if(vigilantsAmount<1) return;
@@ -32,29 +39,31 @@ public class VigilantPlacer : MonoBehaviour
                 PlaceVigilantNear(hit.point);
                 vigilantsAmount--;
                 if(vigilantsAmount < 1){
-                    DisableMousePointer();
+                    mousePointer.SetActive(false);
+                    GameManager.allSet = true;
                 }
             }        
         }
     }
 
-  private void DisableMousePointer()
-  {
-    mousePointer.SetActive(false);
-  }
-
-  private void RenderMousePointerAt(Vector3 pos)
-  {
-    if(grid.isValidPoint(pos)){
-        pointerRenderer.material.color = validColor;
-    }else{
-        pointerRenderer.material.color = invalidColor;
+    private void RenderMousePointerAt(Vector3 pos)
+    {
+        if(grid.isValidPoint(pos)){
+            pointerRenderer.material.color = validColor;
+        }else{
+            pointerRenderer.material.color = invalidColor;
+        }
+        mousePointer.transform.position = pos;
     }
-    mousePointer.transform.position = pos;
-  }
 
-  void PlaceVigilantNear(Vector3 worldPos){
-        Vector3 pos = grid.SnapToGrid(worldPos);
-        Instantiate(vigilantPrefab,pos,Quaternion.identity);
+    void PlaceVigilantNear(Vector3 worldPos){
+            Vector3 pos = grid.SnapToGrid(worldPos);
+            vigilantsList.Enqueue(Instantiate(vigilantPrefab,pos,Quaternion.identity));
+    }
+    void DestroyAll(){
+        foreach (var vigilant in vigilantsList)
+        {
+            Destroy(vigilant);
+        }
     }
 }
