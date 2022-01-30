@@ -37,6 +37,7 @@ public class VigilantPlacer : MonoBehaviour
             RenderMousePointerAt(pos);
             if(Input.GetMouseButtonDown(0)&&grid.isValidPoint(pos)){
                 PlaceVigilantNear(hit.point);
+                AudioManager.Play(AudioEffect.villager);
                 vigilantsAmount--;
                 if(vigilantsAmount < 1){
                     mousePointer.SetActive(false);

@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
     }
     void Win(){
         CanvasController.Win();
+        AudioManager.Play(AudioEffect.win);
         isGameOver = true;
         Time.timeScale = 0;
     }

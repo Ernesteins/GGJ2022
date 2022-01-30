@@ -27,6 +27,7 @@ public class AudioEffects : ScriptableObject
         source.clip = sound.clip;
         source.volume = sound.volume + UnityEngine.Random.Range(-sound.volumeVariation,sound.volumeVariation);
         source.pitch = sound.pitch + UnityEngine.Random.Range(-sound.pitchVariation,sound.pitchVariation);
+        source.Play();
     }
     [System.Serializable]
     public class Sound{
