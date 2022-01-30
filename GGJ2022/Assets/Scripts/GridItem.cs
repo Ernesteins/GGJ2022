@@ -10,4 +10,7 @@ public class GridItem : MonoBehaviour
     private void Start() {
         grid.AddToGrid(this);
     }
+    private void OnDistroy() {
+        grid.RemoveToGrid(this);
+    }
 }

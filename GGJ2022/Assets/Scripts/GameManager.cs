@@ -24,9 +24,12 @@ public class GameManager : MonoBehaviour
     public static event Action onGameOver = delegate(){};
     public static event Action onWin = delegate(){};
     bool isGameOver = false;
+    GridManager gridManager;
     private void Start() {
+        gridManager = FindObjectOfType<GridManager>();
         Time.timeScale = 1;
-        vigilantPlacer.SetUp(vigilantes);
+        vigilantPlacer.SetUp(vigilantes);      
+        gridManager.SetUp(traps);
         allSet = false;
         onekill = false;
         isNight = false;
@@ -73,13 +76,16 @@ public class GameManager : MonoBehaviour
     }
     public void GoalReached()
     {
-        vigilantPlacer.SetUp(vigilantes);
-        allSet = false;
-        onekill = false;
-        isNight = false;
-        ActivateNight(isNight);
-        enemyStats.LevelUp();
-        traps += trapsIncrement;
+        if(onekill){
+            vigilantPlacer.SetUp(vigilantes);
+            allSet = false;
+            onekill = false;
+            isNight = false;
+            ActivateNight(isNight);
+            enemyStats.LevelUp();
+            traps += trapsIncrement;
+            gridManager.SetUp(traps);
+        }
     }
     private void ActivateNight(bool night)
     {
