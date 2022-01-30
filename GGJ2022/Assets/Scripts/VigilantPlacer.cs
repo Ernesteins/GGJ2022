@@ -64,6 +64,7 @@ public class VigilantPlacer : MonoBehaviour
     void DestroyAll(){
         foreach (var vigilant in vigilantsList)
         {
+            vigilant.GetComponent<GridItem>().RemoveFromGrid();
             Destroy(vigilant);
         }
         vigilantsList.Clear();

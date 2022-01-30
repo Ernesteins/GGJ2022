@@ -47,6 +47,7 @@ public class GridManager : MonoBehaviour
     void DestroyAll(){
         foreach (var trap in trapsList)
         {
+            trap.GetComponent<GridItem>().RemoveFromGrid();
             Destroy(trap);
             
         }
