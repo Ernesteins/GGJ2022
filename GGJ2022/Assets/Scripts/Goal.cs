@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    [SerializeField] GameManager gameManager = null;
+   GameManager gameManager = null;
+   private void Start() {
+       gameManager = FindObjectOfType<GameManager>();
+   }
    private void OnTriggerEnter(Collider other) {
        if(other.tag == "Player"){
            if(GameManager.onekill){
-                Debug.Log("You Win!");
                 gameManager.GoalReached();
            }
            else{
-               Debug.Log("Kill someone before the night ends");
+               CanvasController.DisplayMessage("Kill someone before escaping");
            }
        }
    }

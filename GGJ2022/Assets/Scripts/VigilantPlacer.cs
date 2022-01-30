@@ -41,6 +41,7 @@ public class VigilantPlacer : MonoBehaviour
                 if(vigilantsAmount < 1){
                     mousePointer.SetActive(false);
                     GameManager.allSet = true;
+                    CanvasController.DisplayMessage("Press Space to continue");
                 }
             }        
         }
