@@ -5883,6 +5883,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1570407280130927536, guid: 6a4936e9ae3ad504596791d954687920, type: 3}
+      propertyPath: m_text
+      value: <b><i>Credits:</i></b><br> Ernesteins <br> IsmaLB <br> Crixodia
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a4936e9ae3ad504596791d954687920, type: 3}
 --- !u!1001 &824782412
