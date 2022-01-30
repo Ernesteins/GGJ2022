@@ -26,6 +26,7 @@ public class PlayerAttack : MonoBehaviour
     private void Attack()
     {
         Collider[] hitEnemys = Physics.OverlapSphere(attackPoint.position,attackRadius,enemyLayer);
+        AudioManager.Play(AudioEffect.attack);
         foreach (var other in hitEnemys)
         {
             if(other.TryGetComponent<Enemy>(out Enemy enemy)){
