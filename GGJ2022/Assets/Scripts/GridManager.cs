@@ -32,15 +32,14 @@ public class GridManager : MonoBehaviour
     }
   }
 
-    void OnDrawGizmos() {
+  void OnDrawGizmos() {
         Gizmos.color = Color.red;
 
         for (int j = 0; j < grid.rows; j++)
         {
             for (int i = 0; i < grid.cols; i++)
             {
-                Gizmos.DrawWireCube(transform.position + new Vector3(i * grid.cellSize, 0, j * grid.cellSize), new Vector3(grid.cellSize, 0.1f, grid.cellSize));
-                Debug.Log("mina en posicion: X=" + j + " Y=" + i);
+                Gizmos.DrawWireCube(transform.position + new Vector3(i*grid.cellSize,0,j*grid.cellSize),new Vector3(grid.cellSize,0f,grid.cellSize));
             }
         }
     }

@@ -12,6 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5be637568800a5f4eae448e94ee0dde4, type: 3}
   m_Name: EnemyStats
   m_EditorClassIdentifier: 
-  speed: 3
-  updateTime: 0.5
-  enemysActive: 0
+  _speed: 3
+  _angularSpeed: 80
+  _walkRadius: 10
+  _updateTime: 5
+  _followPlayer: 0
+  _Speed: 5
+  _AngularSpeed: 120
+  _WalkRadius: 20
+  _UpdateTime: 3
+  _FollowPlayer: 0.5
+  range: 10
+  spotAngle: 30
+  intensity: 100
+  enemysActive: 1
