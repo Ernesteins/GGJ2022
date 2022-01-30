@@ -15,13 +15,18 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        input.x = Input.GetAxis("Horizontal");
-        input.z = Input.GetAxis("Vertical");
+        input.x = Input.GetAxisRaw("Horizontal");
+        input.z = Input.GetAxisRaw("Vertical");
         input.Normalize();
+        if (input.sqrMagnitude != 0)
+        {
+            transform.forward = input;
+        }
+        
     }
     private void FixedUpdate() {
         if(input.sqrMagnitude>0){
-            controller.Move(input * speed * Time.deltaTime);
+            controller.Move(input * speed * Time.fixedDeltaTime);
         }
     }
 }
