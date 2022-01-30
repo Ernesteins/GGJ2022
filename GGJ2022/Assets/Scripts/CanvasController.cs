@@ -36,7 +36,7 @@ public class CanvasController : MonoBehaviour
         while (t<=1)
         {
             messageGroup.alpha = t;
-            t += Time.deltaTime * fadeSpeed;
+            t += Time.unscaledDeltaTime * fadeSpeed;
             yield return null;
         }
         messageGroup.alpha = 1;
@@ -44,7 +44,7 @@ public class CanvasController : MonoBehaviour
         while (t>=0)
         {
             messageGroup.alpha = t;
-            t -= Time.deltaTime * fadeSpeed;
+            t -= Time.unscaledDeltaTime * fadeSpeed;
             yield return null;
         }
     }
