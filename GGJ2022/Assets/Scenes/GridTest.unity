@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -291,6 +291,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isNight: 0
   vigilantes: 4
+  traps: 6
+  trapsIncrement: 2
   enemyStats: {fileID: 11400000, guid: 3e7427b691ca2084da465a1155ff274d, type: 2}
   startArea: {fileID: 716347685}
   player: {fileID: 2018344769}
@@ -1032,7 +1034,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414122003}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.116, y: 0, z: 0}
+  m_LocalPosition: {x: -1.116, y: 0.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2018344775}
@@ -1316,7 +1318,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 11400000, guid: 59df448b8fe9c294ba72328b5e60a27f, type: 2}
   trapPrefab: {fileID: 8392374178248161704, guid: a2194044a4cf71a418745032c15a8537, type: 3}
-  trapAmount: 10
 --- !u!4 &1680840224
 Transform:
   m_ObjectHideFlags: 0
@@ -1433,6 +1434,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   gravity: -5
+  loboQuieto: {fileID: 0}
+  loboCorre: {fileID: 0}
 --- !u!143 &2018344771
 CharacterController:
   m_ObjectHideFlags: 0
