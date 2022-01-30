@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,11 +19,17 @@ public class GameManager : MonoBehaviour
     internal static bool allSet;
     internal static bool onekill;
     internal static Vector3 playerPosition;
-
+    public static event Action onGameOver = delegate(){};
+    public static event Action onWin = delegate(){};
+    bool isGameOver = false;
     private void Start() {
-        ActivateNight(false);
-        allSet = false;
+        Time.timeScale = 1;
         vigilantPlacer.SetUp(vigilantes);
+        allSet = false;
+        onekill = false;
+        isNight = false;
+        ActivateNight(isNight);
+        CanvasController.DisplayMessage("Use the mouse to place villagers, <br> catch the werewolf!");
     }
     private void Update() {
         if(Input.GetButtonDown("Jump")){
@@ -31,16 +38,45 @@ public class GameManager : MonoBehaviour
                 StartCoroutine(enemyStats.UpdateMovement());
                 ActivateNight(isNight);
             }
+            if(isGameOver){
+                // reloads the scene
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
         }
         playerPosition = player.transform.position;
     }
-    
+    public void EnemyDead(){
+        onekill = true;
+        vigilantes--;
+        if(vigilantes < 1){
+            Win();
+        }
+        else{
+            CanvasController.DisplayMessage("<b>Run!!</b> Look for the exit before they catch you");
+            enemyStats.UpdateEnemies();
+        }
+    }
+    public void GameOver(){
+        if(isGameOver == false){
+            isGameOver = true;
+            CanvasController.GameOver();
+            Time.timeScale=0;
+            Debug.Log("GameOver...");
+        }
+    }
+    void Win(){
+        CanvasController.Win();
+        isGameOver = true;
+        Time.timeScale = 0;
+    }
     public void GoalReached()
     {
         vigilantPlacer.SetUp(vigilantes);
         allSet = false;
+        onekill = false;
         isNight = false;
         ActivateNight(isNight);
+        enemyStats.LevelUp();
     }
     private void ActivateNight(bool night)
     {
@@ -48,5 +84,6 @@ public class GameManager : MonoBehaviour
         player.SetActive(night);
         playerCamera.SetActive(night);
         sun.intensity = night? sunNightValue : sunDayValue;
+        enemyStats.enemysActive = night;
     }
 }

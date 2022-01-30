@@ -39,7 +39,7 @@ public class GridManager : MonoBehaviour
         {
             for (int i = 0; i < grid.cols; i++)
             {
-                Gizmos.DrawWireCube(transform.position + new Vector3(i*grid.cellSize,0,j*grid.cellSize),new Vector3(grid.cellSize,0.1f,grid.cellSize));
+                Gizmos.DrawWireCube(transform.position + new Vector3(i*grid.cellSize,0,j*grid.cellSize),new Vector3(grid.cellSize,0f,grid.cellSize));
             }
         }
     }

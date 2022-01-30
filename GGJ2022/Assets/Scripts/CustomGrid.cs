@@ -27,7 +27,6 @@ public class CustomGrid : ScriptableObject
     public void AddToGrid(GridItem item){
         Vector2Int gridPos = GetGridPoint(item.transform.position);
         if(isValid(gridPos)){
-            Debug.Log("Added"+item.gameObject.name);
             items[gridPos.x,gridPos.y] = item.Type;
         }
     }
