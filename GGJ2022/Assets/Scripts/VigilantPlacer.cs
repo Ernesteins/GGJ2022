@@ -37,11 +37,12 @@ public class VigilantPlacer : MonoBehaviour
             RenderMousePointerAt(pos);
             if(Input.GetMouseButtonDown(0)&&grid.isValidPoint(pos)){
                 PlaceVigilantNear(hit.point);
+                AudioManager.Play(AudioEffect.villager);
                 vigilantsAmount--;
                 if(vigilantsAmount < 1){
                     mousePointer.SetActive(false);
                     GameManager.allSet = true;
-                    CanvasController.DisplayMessage("Press <i>Space</i> to continue");
+                    CanvasController.DisplayMessage("Press <i>space</i> to continue");
                 }
             }        
         }
