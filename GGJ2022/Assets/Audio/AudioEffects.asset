@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: AudioEffects
   m_EditorClassIdentifier: 
   attack:
-    clip: {fileID: 8300000, guid: 3dee29c67ca747f4291ec909f4a1f891, type: 3}
+    clip: {fileID: 8300000, guid: 5b25f83b263332d40add6f5797459624, type: 3}
     volume: 1
     volumeVariation: 0.25
     pitch: 1
     pitchVariation: 0.25
   villager:
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: ede6086e894027045913e164126fdfd7, type: 3}
     volume: 1
     volumeVariation: 0.25
     pitch: 1
@@ -31,7 +31,7 @@ MonoBehaviour:
     pitch: 1
     pitchVariation: 0.25
   trap:
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: b25aaa84e8312d040b7a9f0e6016ef3c, type: 3}
     volume: 1
     volumeVariation: 0.25
     pitch: 1
